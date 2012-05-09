@@ -8,6 +8,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "username"
     t.string   "facebook_token"
     t.string   "email",                               :default => "", :null => false
+    t.string   "unconfirmed_email",                   :default => ""
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"

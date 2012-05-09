@@ -1,7 +1,17 @@
 require "test_helper"
 
-describe DeviseBackground::Worker do
-  it "asserts something" do
-    true.must_equal true
+module DeviseBackground
+  describe "Worker" do
+    it "enqueues job in resque" do
+      Resque.expects(:enqueue).with(Worker, :mailer_method, "User", 123)
+      Worker.enqueue(:mailer_method, "User", 123)
+    end
+
+    it "delegates do devise mailer when delivering" do
+      user = create_user
+      ActionMailer::Base.deliveries = []
+      Worker.perform(:confirmation_instructions, "User", user.id)
+      ActionMailer::Base.deliveries.size.must_equal 1
+    end
   end
 end
