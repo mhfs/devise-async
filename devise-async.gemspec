@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/devise_background/version', __FILE__)
+require File.expand_path('../lib/devise_async/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Marcelo Silveira"]
@@ -11,9 +11,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "devise_background"
+  gem.name          = "devise-async"
   gem.require_paths = ["lib"]
-  gem.version       = DeviseBackground::VERSION
+  gem.version       = DeviseAsync::VERSION
 
   gem.add_dependency "devise"
 

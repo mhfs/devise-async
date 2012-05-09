@@ -1,6 +1,6 @@
 require "test_helper"
 
-module DeviseBackground
+module DeviseAsync
   describe "Proxy" do
     it "gets called by devise operations and proxy to worker" do
       user = create_user

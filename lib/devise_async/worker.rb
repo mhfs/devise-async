@@ -1,4 +1,4 @@
-module DeviseBackground
+module DeviseAsync
   class Worker
     @queue = :mailer
 

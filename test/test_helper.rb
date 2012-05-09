@@ -5,16 +5,16 @@ require "minitest/spec"
 require "minitest/mock"
 require "mocha"
 
-require "devise_background"
+require "devise_async"
 require "rails/all"
 require "devise"
 require "resque"
 
 require "support/helpers"
 
-Devise.mailer = "DeviseBackground::Proxy"
+Devise.mailer = "DeviseAsync::Proxy"
 
-module DeviseBackground
+module DeviseAsync
   class RailsApp < ::Rails::Application
     config.root = File.dirname(__FILE__) + "/support/app"
     config.active_support.deprecation = :log
@@ -23,5 +23,5 @@ module DeviseBackground
   end
 end
 
-DeviseBackground::RailsApp.initialize!
+DeviseAsync::RailsApp.initialize!
 load File.dirname(__FILE__) + "/support/app/db/schema.rb"

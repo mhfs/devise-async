@@ -1,6 +1,6 @@
 require "test_helper"
 
-module DeviseBackground
+module DeviseAsync
   describe "Worker" do
     it "enqueues job in resque" do
       Resque.expects(:enqueue).with(Worker, :mailer_method, "User", 123)
