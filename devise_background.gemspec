@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "devise_background"
   gem.require_paths = ["lib"]
   gem.version       = DeviseBackground::VERSION
+
+  gem.add_dependency "devise"
 end

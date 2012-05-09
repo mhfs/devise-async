@@ -1,5 +1,6 @@
 require "devise_background/version"
 
 module DeviseBackground
-  # Your code goes here...
+  autoload :Proxy,  "devise_background/proxy"
+  autoload :Worker, "devise_background/worker"
 end
