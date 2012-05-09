@@ -1,7 +1,11 @@
 require "test_helper"
 
-describe DeviseBackground::Proxy do
-  it "asserts something" do
-    true.must_equal true
+module DeviseBackground
+  describe "Proxy" do
+    it "gets called by devise operations and proxy to worker" do
+      user = create_user
+      Worker.expects(:enqueue).with(:confirmation_instructions, "User", user.id)
+      user.send_confirmation_instructions
+    end
   end
 end

@@ -1,0 +1,6 @@
+test:
+  adapter: mysql2
+  database: test
+  username: root
+  password: 123mudar
+  host: localhost
