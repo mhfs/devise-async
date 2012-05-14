@@ -1,14 +1,13 @@
 module DeviseAsync
   class Worker
-    @queue = :mailer
-
     def self.enqueue(method, resource_class, resource_id)
-      Resque.enqueue(self, method, resource_class, resource_id)
+      backend_class.enqueue(method, resource_class, resource_id)
     end
 
-    def self.perform(method, resource_class, resource_id)
-      resource = resource_class.constantize.find(resource_id)
-      Devise::Mailer.send(method, resource).deliver
+    private
+
+    def self.backend_class
+      Backend.for(DeviseAsync.backend)
     end
   end
 end
