@@ -6,7 +6,7 @@ Supported backends:
 
 * Resque
 * Sidekiq
-* Delayed::Job (coming)
+* Delayed::Job
 
 ## Installation
 

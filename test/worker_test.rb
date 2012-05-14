@@ -18,7 +18,9 @@ module DeviseAsync
 
     it "enqueues job using the delayed job backend" do
       DeviseAsync.backend = :delayed_job
-      skip
+
+      Backend::DelayedJob.expects(:enqueue).with(:mailer_method, "User", 123)
+      Worker.enqueue(:mailer_method, "User", 123)
     end
   end
 end

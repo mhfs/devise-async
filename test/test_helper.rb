@@ -10,6 +10,7 @@ require "rails/all"
 require "devise"
 require "resque"
 require "sidekiq"
+require "delayed_job_active_record"
 
 require "support/helpers"
 

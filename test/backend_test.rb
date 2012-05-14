@@ -11,7 +11,7 @@ module DeviseAsync
     end
 
     it "gives delayed job as the backend" do
-      skip
+      Backend.for(:delayed_job).must_equal Backend::DelayedJob
     end
 
     it "alerts about unsupported backend" do
