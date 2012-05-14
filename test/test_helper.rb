@@ -9,6 +9,7 @@ require "devise_async"
 require "rails/all"
 require "devise"
 require "resque"
+require "sidekiq"
 
 require "support/helpers"
 

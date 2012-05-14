@@ -7,7 +7,7 @@ module DeviseAsync
     end
 
     it "gives sidekiq as the backend" do
-      skip
+      Backend.for(:sidekiq).must_equal Backend::Sidekiq
     end
 
     it "gives delayed job as the backend" do

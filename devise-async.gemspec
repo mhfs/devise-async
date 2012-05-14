@@ -22,6 +22,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "actionmailer", "~> 3.2"
   gem.add_development_dependency "mysql2", "~> 0.3"
   gem.add_development_dependency "resque", "~> 1.20"
+  gem.add_development_dependency "sidekiq", "~> 1.2"
   gem.add_development_dependency "mocha", "~> 0.11"
   gem.add_development_dependency "minitest", "~> 3.0"
 end

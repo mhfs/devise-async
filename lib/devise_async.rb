@@ -8,6 +8,7 @@ module DeviseAsync
 
   module Backend
     autoload :Resque, "devise_async/backend/resque"
+    autoload :Sidekiq, "devise_async/backend/sidekiq"
   end
 
   # Defines the queue backend to be used. Resque by default.

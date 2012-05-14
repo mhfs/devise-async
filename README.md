@@ -5,7 +5,7 @@ Devise Async provides an easy way to configure Devise to send its emails asynchr
 Supported backends:
 
 * Resque
-* Sidekiq (coming)
+* Sidekiq
 * Delayed::Job (coming)
 
 ## Installation
