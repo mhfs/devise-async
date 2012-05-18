@@ -15,15 +15,15 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = DeviseAsync::VERSION
 
-  gem.add_dependency "devise"
+  gem.add_dependency "devise", ">= 1.1"
 
-  gem.add_development_dependency "activerecord", "~> 3.2"
-  gem.add_development_dependency "actionpack", "~> 3.2"
-  gem.add_development_dependency "actionmailer", "~> 3.2"
-  gem.add_development_dependency "mysql2", "~> 0.3"
-  gem.add_development_dependency "resque", "~> 1.20"
-  gem.add_development_dependency "sidekiq", "~> 1.2"
+  gem.add_development_dependency "activerecord",              "~> 3.2"
+  gem.add_development_dependency "actionpack",                "~> 3.2"
+  gem.add_development_dependency "actionmailer",              "~> 3.2"
+  gem.add_development_dependency "mysql2",                    "~> 0.3"
+  gem.add_development_dependency "resque",                    "~> 1.20"
+  gem.add_development_dependency "sidekiq",                   "~> 1.2"
   gem.add_development_dependency "delayed_job_active_record", "~> 0.3"
-  gem.add_development_dependency "mocha", "~> 0.11"
-  gem.add_development_dependency "minitest", "~> 3.0"
+  gem.add_development_dependency "mocha",                     "~> 0.11"
+  gem.add_development_dependency "minitest",                  "~> 3.0"
 end
