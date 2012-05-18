@@ -18,7 +18,7 @@ Devise.mailer = "DeviseAsync::Proxy"
 
 module DeviseAsync
   class RailsApp < ::Rails::Application
-    config.root = File.dirname(__FILE__) + "/support/app"
+    config.root = File.dirname(__FILE__) + "/support/rails_app"
     config.active_support.deprecation = :log
     config.action_mailer.default_url_options = { :host => "localhost:3000" }
     config.action_mailer.delivery_method = :test
@@ -26,4 +26,4 @@ module DeviseAsync
 end
 
 DeviseAsync::RailsApp.initialize!
-load File.dirname(__FILE__) + "/support/app/db/schema.rb"
+load File.dirname(__FILE__) + "/support/rails_app/db/schema.rb"

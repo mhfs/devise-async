@@ -15,5 +15,5 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-test/support/app/log/*
-test/support/app/db/*.sqlite3
+test/support/rails_app/log/*
+test/support/rails_app/db/*.sqlite3
