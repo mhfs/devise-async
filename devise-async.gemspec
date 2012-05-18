@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/devise_async/version', __FILE__)
+require File.expand_path('../lib/devise/async/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Marcelo Silveira"]
@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "devise-async"
   gem.require_paths = ["lib"]
-  gem.version       = DeviseAsync::VERSION
+  gem.version       = Devise::Async::VERSION
 
   gem.add_dependency "devise", ">= 1.1"
 

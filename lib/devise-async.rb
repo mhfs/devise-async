@@ -1,1 +1,1 @@
-require "devise_async"
+require "devise/async"

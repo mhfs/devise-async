@@ -26,18 +26,18 @@ Or install it yourself as:
 
 ## Usage
 
-Set `DeviseAsync::Proxy` as Devise's mailer in `config/initializers/devise.rb`:
+Set `Devise::Async::Proxy` as Devise's mailer in `config/initializers/devise.rb`:
 
 ```ruby
 # Configure the class responsible to send e-mails.
-config.mailer = "DeviseAsync::Proxy"
+config.mailer = "Devise::Async::Proxy"
 ```
 
 Set your queuing backend by creating `config/initializers/devise_async.rb`:
 
 ```ruby
 # Supported options: :resque, :sidekiq, :delayed_job
-DeviseAsync.backend = :resque
+Devise::Async.backend = :resque
 ```
 
 Tip: it defaults to Resque. You don't need to create the initializer if using it.
