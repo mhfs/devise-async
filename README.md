@@ -12,7 +12,9 @@ Supported backends:
 
 Add this line to your application's Gemfile:
 
-    gem 'devise-async'
+```ruby
+gem 'devise-async'
+```
 
 And then execute:
 
@@ -26,13 +28,17 @@ Or install it yourself as:
 
 Set `DeviseAsync::Proxy` as Devise's mailer in `config/initializers/devise.rb`:
 
-    # Configure the class responsible to send e-mails.
-    config.mailer = "DeviseAsync::Proxy"
+```ruby
+# Configure the class responsible to send e-mails.
+config.mailer = "DeviseAsync::Proxy"
+```
 
 Set your queuing backend by creating `config/initializers/devise_async.rb`:
 
-    # Supported options: :resque, :sidekiq, :delayed_job
-    DeviseAsync.backend = :resque
+```ruby
+# Supported options: :resque, :sidekiq, :delayed_job
+DeviseAsync.backend = :resque
+```
 
 Tip: it defaults to Resque. You don't need to create the initializer if using it.
 
