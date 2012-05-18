@@ -1,6 +1,6 @@
 module DeviseAsync
   module Backend
-    class Resque
+    class Resque < Base
       @queue = :mailer
 
       def self.enqueue(*args)
@@ -9,8 +9,7 @@ module DeviseAsync
       end
 
       def self.perform(method, resource_class, resource_id)
-        resource = resource_class.constantize.find(resource_id)
-        Devise::Mailer.send(method, resource).deliver
+        new.perform(method, resource_class, resource_id)
       end
     end
   end
