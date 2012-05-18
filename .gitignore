@@ -16,3 +16,4 @@ test/tmp
 test/version_tmp
 tmp
 test/support/app/log/*
+test/support/app/db/*.sqlite3
