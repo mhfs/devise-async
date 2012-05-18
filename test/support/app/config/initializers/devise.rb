@@ -213,7 +213,4 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-
-  # FIXME remove as soon as deprecation stops
-  config.use_salt_as_remember_token = true
 end
