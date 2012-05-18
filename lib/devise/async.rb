@@ -19,3 +19,14 @@ module Devise
     @@backend = :resque
   end
 end
+
+# Just to be compatible with first release
+# TODO remove when appropriate
+module DeviseAsync
+  class Proxy < Devise::Async::Proxy
+    def initialize(method, resource)
+      puts "DEPRECATION WARNING: DeviseAsync::Proxy has been deprecated. Please use Devise::Async::Proxy."
+      super
+    end
+  end
+end

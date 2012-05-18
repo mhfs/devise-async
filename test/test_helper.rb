@@ -14,8 +14,6 @@ require "delayed_job_active_record"
 
 require "support/helpers"
 
-Devise.mailer = "Devise::Async::Proxy"
-
 # Silent schema load output
 ActiveRecord::Migration.verbose = false
 
