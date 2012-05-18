@@ -1,4 +1,4 @@
-# Devise Async
+# Devise Async [![Build Status](https://secure.travis-ci.org/mhfs/devise-async.png)](http://travis-ci.org/mhfs/devise-async)
 
 Devise Async provides an easy way to configure Devise to send its emails asynchronously using your preferred queuing backend.
 
