@@ -8,7 +8,13 @@ module Devise
 
         def perform(method, resource_class, resource_id)
           resource = resource_class.constantize.find(resource_id)
-          Devise::Mailer.send(method, resource).deliver
+          mailer_class.send(method, resource).deliver
+        end
+
+        private
+
+        def mailer_class
+          @mailer_class ||= Devise::Async.mailer.constantize
         end
       end
     end

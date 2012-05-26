@@ -42,6 +42,31 @@ Devise::Async.backend = :resque
 
 Tip: it defaults to Resque. You don't need to create the initializer if using it.
 
+## Advanced Options
+
+### Custom mailer class
+
+If you inherit `Devise::Mailer` to a class of your own for customization purposes,
+you'll need to tell `Devise::Async` to proxy to that class.
+
+```ruby
+# config/initializers/devise_async.rb
+Devise::Async.mailer = "MyCustomMailer"
+```
+
+### Setup via block
+
+To avoid repeating `Devise::Async` in the initializer file you can use the block syntax
+similar do what `Devise` offers.
+
+```ruby
+# config/initializers/devise_async.rb
+Devise::Async.setup do |config|
+  config.backend = :resque
+  config.mailer  = "MyCustomMailer"
+end
+```
+
 ## Contributing
 
 1. Fork it

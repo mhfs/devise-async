@@ -17,6 +17,22 @@ module Devise
     # Defines the queue backend to be used. Resque by default.
     mattr_accessor :backend
     @@backend = :resque
+
+    # Defines the mailer class to be used. Devise::Mailer by default.
+    mattr_accessor :mailer
+    @@mailer = "Devise::Mailer"
+
+    # Allow configuring Devise::Async with a block
+    #
+    # Example:
+    #
+    #     Devise::Async.setup do |config|
+    #       config.backend = :resque
+    #       config.mailer = "MyMailer"
+    #     end
+    def self.setup
+      yield self
+    end
   end
 end
 
