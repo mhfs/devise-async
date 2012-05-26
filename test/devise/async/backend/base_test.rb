@@ -7,7 +7,7 @@ module Devise
         it "delegates to configured mailer" do
           Async.mailer = "MyMailer"
           user = create_user
-          mailer_instance = mock(deliver: true)
+          mailer_instance = mock(:deliver => true)
 
           MyMailer.expects(:confirmation_instructions).once.returns(mailer_instance)
           Base.new.perform(:confirmation_instructions, "User", user.id)
