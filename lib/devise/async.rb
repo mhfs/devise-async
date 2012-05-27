@@ -45,4 +45,9 @@ module DeviseAsync
       super
     end
   end
+
+  def self.backend=(value)
+    puts "DEPRECATION WARNING: `DeviseAsync.backend=` has been deprecated. Please use `Devise::Async.backend=`."
+    Devise::Async.backend = value
+  end
 end
