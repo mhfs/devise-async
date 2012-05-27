@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.0
+
 * New
 	* Added `Devise::Async.mailer` option to proxy to custom mailers
 	* Added `Devise::Async.setup` to allow configuring with blocks
