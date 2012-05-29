@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Devise-async : Send Devise's emails in background. Supports Resque, Sidekiq and Delayed::Job." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Devise-async</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/mhfs/devise-async">View on GitHub</a>
+
+          <h1 id="project_title">Devise-async</h1>
+          <h2 id="project_tagline">Send Devise's emails in background. Supports Resque, Sidekiq and Delayed::Job.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/mhfs/devise-async/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/mhfs/devise-async/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Devise Async</h1>
+
+<p>Devise Async provides an easy way to configure Devise to send its emails asynchronously using your preferred queuing backend.</p>
+
+<p>Supported backends:</p>
+
+<ul>
+<li>Resque</li>
+<li>Sidekiq</li>
+<li>Delayed::Job</li>
+</ul><h2>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<div class="highlight">
+<pre><span class="n">gem</span> <span class="s1">'devise-async'</span>
+</pre>
+</div>
+
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install devise-async
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>Set <code>Devise::Async::Proxy</code> as Devise's mailer in <code>config/initializers/devise.rb</code>:</p>
+
+<div class="highlight">
+<pre><span class="c1"># Configure the class responsible to send e-mails.</span>
+<span class="n">config</span><span class="o">.</span><span class="n">mailer</span> <span class="o">=</span> <span class="s2">"Devise::Async::Proxy"</span>
+</pre>
+</div>
+
+
+<p>Set your queuing backend by creating <code>config/initializers/devise_async.rb</code>:</p>
+
+<div class="highlight">
+<pre><span class="c1"># Supported options: :resque, :sidekiq, :delayed_job</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="ss">:resque</span>
+</pre>
+</div>
+
+
+<p>Tip: it defaults to Resque. You don't need to create the initializer if using it.</p>
+
+<h2>Advanced Options</h2>
+
+<h3>Custom mailer class</h3>
+
+<p>If you inherit <code>Devise::Mailer</code> to a class of your own for customization purposes,
+you'll need to tell <code>Devise::Async</code> to proxy to that class.</p>
+
+<div class="highlight">
+<pre><span class="c1"># config/initializers/devise_async.rb</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">mailer</span> <span class="o">=</span> <span class="s2">"MyCustomMailer"</span>
+</pre>
+</div>
+
+
+<h3>Setup via block</h3>
+
+<p>To avoid repeating <code>Devise::Async</code> in the initializer file you can use the block syntax
+similar do what <code>Devise</code> offers.</p>
+
+<div class="highlight">
+<pre><span class="c1"># config/initializers/devise_async.rb</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="ss">:resque</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">mailer</span>  <span class="o">=</span> <span class="s2">"MyCustomMailer"</span>
+<span class="k">end</span>
+</pre>
+</div>
+
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h2>License</h2>
+
+<p>Released under the MIT License. See the <a href="https://github.com/mhfs/devise-async/blob/master/LICENSE">LICENSE</a> file for further details.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Devise-async maintained by <a href="https://github.com/mhfs">mhfs</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
