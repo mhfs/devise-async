@@ -1,5 +1,9 @@
 ## Unreleased
 
+* Fixes
+  * Changed the way we store the record id in the queue to enforce
+  compatibility with diferent ORMs
+
 ## 0.1.0
 
 * New

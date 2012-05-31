@@ -11,7 +11,7 @@ module Devise
       end
 
       def deliver
-        Worker.enqueue(@method, @resource.class.name, @resource.to_param)
+        Worker.enqueue(@method, @resource.class.name, @resource.to_key)
       end
     end
   end
