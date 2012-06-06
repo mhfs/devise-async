@@ -15,6 +15,12 @@ module Devise
           Backend::Resque.perform(:confirmation_instructions, "User", user.id)
           ActionMailer::Base.deliveries.size.must_equal 1
         end
+
+        it "enqueues to configured queue" do
+          expected_size = 1 + ::Resque.size(:custom_queue)
+          Resque.enqueue(:mailer_method, "User", 123)
+          ::Resque.size(:custom_queue).must_equal expected_size
+        end
       end
     end
   end

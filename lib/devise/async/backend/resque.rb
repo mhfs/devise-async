@@ -2,7 +2,7 @@ module Devise
   module Async
     module Backend
       class Resque < Base
-        @queue = :mailer
+        @queue = Devise::Async.queue
 
         def self.enqueue(*args)
           args.unshift(self)

@@ -22,6 +22,10 @@ module Devise
     mattr_accessor :mailer
     @@mailer = "Devise::Mailer"
 
+    # Defines the queue in which the background job will be enqueued. Default is :mailer.
+    mattr_accessor :queue
+    @@queue = :mailer
+
     # Allow configuring Devise::Async with a block
     #
     # Example:

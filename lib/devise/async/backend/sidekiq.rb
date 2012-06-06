@@ -4,7 +4,7 @@ module Devise
       class Sidekiq < Base
         include ::Sidekiq::Worker
 
-        sidekiq_options :queue => :mailer
+        sidekiq_options :queue => Devise::Async.queue
 
         def self.enqueue(*args)
           perform_async(*args)

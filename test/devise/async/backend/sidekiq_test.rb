@@ -15,6 +15,12 @@ module Devise
           Backend::Sidekiq.new.perform(:confirmation_instructions, "User", user.id)
           ActionMailer::Base.deliveries.size.must_equal 1
         end
+
+        it "enqueues to configured queue" do
+          expected_size = 1 + Sidekiq.jobs.size
+          Sidekiq.enqueue(:mailer_method, "User", 123)
+          Sidekiq.jobs.size.must_equal expected_size
+        end
       end
     end
   end

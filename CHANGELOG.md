@@ -1,5 +1,9 @@
 ## Unreleased
 
+* Enhancements
+  * Added `Devise::Async.queue` option to let configure the queue
+  the jobs will be enqueued to.
+
 ## 0.1.1
 
 * Fixes

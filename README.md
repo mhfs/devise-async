@@ -54,6 +54,16 @@ you'll need to tell `Devise::Async` to proxy to that class.
 Devise::Async.mailer = "MyCustomMailer"
 ```
 
+### Custom queue
+
+Let you specify a custom queue where to enqueue your background Devise jobs. Works
+only for Resque and Sidekiq. Defaults to :mailer.
+
+```ruby
+# config/initializers/devise_async.rb
+Devise::Async.queue = :my_custom_queue
+```
+
 ### Setup via block
 
 To avoid repeating `Devise::Async` in the initializer file you can use the block syntax
@@ -64,6 +74,7 @@ similar do what `Devise` offers.
 Devise::Async.setup do |config|
   config.backend = :resque
   config.mailer  = "MyCustomMailer"
+  config.queue   = :my_custom_queue
 end
 ```
 
