@@ -18,3 +18,11 @@ end
 def create_user(attributes={})
   User.create!(valid_attributes(attributes))
 end
+
+def new_admin(attributes={})
+  Admin.new(valid_attributes(attributes))
+end
+
+def create_admin(attributes={})
+  Admin.create!(valid_attributes(attributes))
+end

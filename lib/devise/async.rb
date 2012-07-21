@@ -6,6 +6,7 @@ module Devise
     autoload :Proxy,   "devise/async/proxy"
     autoload :Worker,  "devise/async/worker"
     autoload :Backend, "devise/async/backend"
+    autoload :Model,   "devise/async/model"
 
     module Backend
       autoload :Base,       "devise/async/backend/base"

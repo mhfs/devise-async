@@ -1,5 +1,10 @@
 ## Unreleased
 
+* Fixes
+  * Added `Devise::Async::Model` to use new devise's after_commit hooks to resolve #6 (only devise >=2.1.1)
+
+## 0.2.0
+
 * Enhancements
   * Added `Devise::Async.queue` option to let configure the queue
   the jobs will be enqueued to.

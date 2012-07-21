@@ -26,12 +26,27 @@ Or install it yourself as:
 
 ## Usage
 
+### Devise >= 2.1.1
+
+Include `Devise::Async::Model` to your Devise model
+
+```ruby
+class User < ActiveRecord::Base
+  devise :database_authenticatable, :confirmable # etc ...
+
+  include Devise::Async::Model # should be below call to `devise`
+end
+```
+
+### Devise < 2.1.1
+
 Set `Devise::Async::Proxy` as Devise's mailer in `config/initializers/devise.rb`:
 
 ```ruby
 # Configure the class responsible to send e-mails.
 config.mailer = "Devise::Async::Proxy"
 ```
+### All
 
 Set your queuing backend by creating `config/initializers/devise_async.rb`:
 
