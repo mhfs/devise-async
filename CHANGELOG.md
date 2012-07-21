@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.3.0
+
 * Fixes
   * Added `Devise::Async::Model` to use new devise's after_commit hooks to resolve #6 (only devise >=2.1.1)
 
