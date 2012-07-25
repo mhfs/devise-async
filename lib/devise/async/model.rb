@@ -10,7 +10,11 @@ module Devise
       protected
 
       def send_devise_notification(notification)
-        devise_pending_notifications << notification
+        if self.changed?
+          devise_pending_notifications << notification
+        else
+          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s)
+        end
       end
 
       def send_devise_pending_notifications
