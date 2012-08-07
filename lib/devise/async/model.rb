@@ -4,13 +4,17 @@ module Devise
       extend ActiveSupport::Concern
 
       included do
-        after_commit :send_devise_pending_notifications
+        if respond_to?(:after_commit) # AR only
+          after_commit :send_devise_pending_notifications
+        else # mongoid
+          after_save :send_devise_pending_notifications
+        end
       end
 
       protected
 
       def send_devise_notification(notification)
-        if self.changed?
+        if changed?
           devise_pending_notifications << notification
         else
           Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s)
