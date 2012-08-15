@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.3.1
+
 * Fixes
   * Do not register after_commit unless ORM supports it
   * Only enqueue notifications for after_commit if model is dirty
