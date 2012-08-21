@@ -45,11 +45,8 @@
 
 <p>Add this line to your application's Gemfile:</p>
 
-<div class="highlight">
-<pre><span class="n">gem</span> <span class="s1">'devise-async'</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="n">gem</span> <span class="s1">'devise-async'</span>
+</pre></div>
 
 <p>And then execute:</p>
 
@@ -63,23 +60,32 @@
 
 <h2>Usage</h2>
 
+<h3>Devise &gt;= 2.1.1</h3>
+
+<p>Include <code>Devise::Async::Model</code> to your Devise model</p>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:confirmable</span> <span class="c1"># etc ...</span>
+
+  <span class="kp">include</span> <span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">::</span><span class="no">Model</span> <span class="c1"># should be below call to `devise`</span>
+<span class="k">end</span>
+</pre></div>
+
+<h3>Devise &lt; 2.1.1</h3>
+
 <p>Set <code>Devise::Async::Proxy</code> as Devise's mailer in <code>config/initializers/devise.rb</code>:</p>
 
-<div class="highlight">
-<pre><span class="c1"># Configure the class responsible to send e-mails.</span>
+<div class="highlight"><pre><span class="c1"># Configure the class responsible to send e-mails.</span>
 <span class="n">config</span><span class="o">.</span><span class="n">mailer</span> <span class="o">=</span> <span class="s2">"Devise::Async::Proxy"</span>
-</pre>
-</div>
+</pre></div>
 
+<h3>All</h3>
 
 <p>Set your queuing backend by creating <code>config/initializers/devise_async.rb</code>:</p>
 
-<div class="highlight">
-<pre><span class="c1"># Supported options: :resque, :sidekiq, :delayed_job</span>
+<div class="highlight"><pre><span class="c1"># Supported options: :resque, :sidekiq, :delayed_job</span>
 <span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="ss">:resque</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Tip: it defaults to Resque. You don't need to create the initializer if using it.</p>
 
@@ -90,27 +96,31 @@
 <p>If you inherit <code>Devise::Mailer</code> to a class of your own for customization purposes,
 you'll need to tell <code>Devise::Async</code> to proxy to that class.</p>
 
-<div class="highlight">
-<pre><span class="c1"># config/initializers/devise_async.rb</span>
+<div class="highlight"><pre><span class="c1"># config/initializers/devise_async.rb</span>
 <span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">mailer</span> <span class="o">=</span> <span class="s2">"MyCustomMailer"</span>
-</pre>
-</div>
+</pre></div>
 
+<h3>Custom queue</h3>
+
+<p>Let you specify a custom queue where to enqueue your background Devise jobs. Works
+only for Resque and Sidekiq. Defaults to :mailer.</p>
+
+<div class="highlight"><pre><span class="c1"># config/initializers/devise_async.rb</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="ss">:my_custom_queue</span>
+</pre></div>
 
 <h3>Setup via block</h3>
 
 <p>To avoid repeating <code>Devise::Async</code> in the initializer file you can use the block syntax
 similar do what <code>Devise</code> offers.</p>
 
-<div class="highlight">
-<pre><span class="c1"># config/initializers/devise_async.rb</span>
+<div class="highlight"><pre><span class="c1"># config/initializers/devise_async.rb</span>
 <span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="ss">:resque</span>
   <span class="n">config</span><span class="o">.</span><span class="n">mailer</span>  <span class="o">=</span> <span class="s2">"MyCustomMailer"</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">queue</span>   <span class="o">=</span> <span class="ss">:my_custom_queue</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h2>Contributing</h2>
 
