@@ -1,5 +1,8 @@
 ## Unreleased
 
+* Enhancements
+  * Add support for queue config to DelayedJob backend
+
 ## 0.3.1
 
 * Fixes
