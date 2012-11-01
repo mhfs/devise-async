@@ -6,7 +6,6 @@ module Devise
     autoload :Proxy,   "devise/async/proxy"
     autoload :Worker,  "devise/async/worker"
     autoload :Backend, "devise/async/backend"
-    autoload :Model,   "devise/async/model"
 
     module Backend
       autoload :Base,       "devise/async/backend/base"
@@ -56,3 +55,5 @@ module DeviseAsync
     Devise::Async.backend = value
   end
 end
+
+Devise.add_module(:async, :model => 'devise/async/model')

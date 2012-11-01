@@ -1,6 +1,6 @@
 module Devise
-  module Async
-    module Model
+  module Models
+    module Async
       extend ActiveSupport::Concern
 
       included do
