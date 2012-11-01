@@ -26,7 +26,7 @@ Or install it yourself as:
 
 ## Usage
 
-Add `:async` to the `devise` call in your model
+Add `:async` to the `devise` call in your model:
 
 ```ruby
 class User < ActiveRecord::Base
@@ -46,6 +46,9 @@ Tip: it defaults to Resque. You don't need to create the initializer if using it
 ### Devise < 2.1.1
 
 Set `Devise::Async::Proxy` as Devise's mailer in `config/initializers/devise.rb`:
+
+Note: before devise 2.1.1 devise-async had issues with background jobs trying to run
+before the record was committed to the DB if the creation was transactioned.
 
 ```ruby
 # Configure the class responsible to send e-mails.
