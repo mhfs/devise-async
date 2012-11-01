@@ -1,4 +1,15 @@
 module Devise
+  # TODO remove when appropriate
+  module Async
+    module Model
+      extend ActiveSupport::Concern
+
+      included do
+        warn "Including Devise::Async::Model directly in your models is no longer supported and won't work. Please add `:async` to your `devise` call."
+      end
+    end
+  end
+
   module Models
     module Async
       extend ActiveSupport::Concern

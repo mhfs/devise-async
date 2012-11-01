@@ -2,6 +2,8 @@
 
 * Enhancements
   * Add support for queue config to DelayedJob backend
+  * Use Devise third party modules API insted of including module directly.
+    This fixes the ordering issue when including.
 
 ## 0.3.1
 
