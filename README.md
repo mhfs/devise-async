@@ -47,13 +47,13 @@ Tip: it defaults to Resque. You don't need to create the initializer if using it
 
 Set `Devise::Async::Proxy` as Devise's mailer in `config/initializers/devise.rb`:
 
-Note: before devise 2.1.1 devise-async had issues with background jobs trying to run
-before the record was committed to the DB if the creation was transactioned.
-
 ```ruby
 # Configure the class responsible to send e-mails.
 config.mailer = "Devise::Async::Proxy"
 ```
+
+Note: before devise 2.1.1 devise-async had issues with background jobs trying to run
+before the record was committed to the DB if the creation was transactioned.
 
 ## Advanced Options
 
