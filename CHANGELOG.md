@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.4.0
+
 * Enhancements
   * Add support for queue config to DelayedJob backend
   * Use Devise third party modules API insted of including module directly.
