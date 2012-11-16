@@ -7,6 +7,7 @@ Supported backends:
 * Resque
 * Sidekiq
 * Delayed::Job
+* QueueClassic
 
 ## Installation
 
@@ -37,7 +38,7 @@ end
 Set your queuing backend by creating `config/initializers/devise_async.rb`:
 
 ```ruby
-# Supported options: :resque, :sidekiq, :delayed_job
+# Supported options: :resque, :sidekiq, :delayed_job, :queue_classic
 Devise::Async.backend = :resque
 ```
 
@@ -70,7 +71,7 @@ Devise::Async.mailer = "MyCustomMailer"
 ### Custom queue
 
 Let you specify a custom queue where to enqueue your background Devise jobs. Works
-only for Resque and Sidekiq. Defaults to :mailer.
+only for Resque, Sidekiq and QueueClassic. Defaults to :mailer.
 
 ```ruby
 # config/initializers/devise_async.rb
