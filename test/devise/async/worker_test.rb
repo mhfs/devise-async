@@ -23,6 +23,13 @@ module Devise
         Backend::DelayedJob.expects(:enqueue).with(:mailer_method, "User", 123)
         Worker.enqueue(:mailer_method, "User", 123)
       end
+
+      it "enqueues job using the queue classic backend" do
+        Devise::Async.backend = :queue_classic
+
+        Backend::QueueClassic.expects(:enqueue).with(:mailer_method, "User", 123)
+        Worker.enqueue(:mailer_method, "User", 123)
+      end
     end
   end
 end

@@ -9,10 +9,11 @@ module Devise
     autoload :Model,   "devise/async/model"
 
     module Backend
-      autoload :Base,       "devise/async/backend/base"
-      autoload :Resque,     "devise/async/backend/resque"
-      autoload :Sidekiq,    "devise/async/backend/sidekiq"
-      autoload :DelayedJob, "devise/async/backend/delayed_job"
+      autoload :Base,         "devise/async/backend/base"
+      autoload :Resque,       "devise/async/backend/resque"
+      autoload :Sidekiq,      "devise/async/backend/sidekiq"
+      autoload :DelayedJob,   "devise/async/backend/delayed_job"
+      autoload :QueueClassic, "devise/async/backend/queue_classic"
     end
 
     # Defines the queue backend to be used. Resque by default.
