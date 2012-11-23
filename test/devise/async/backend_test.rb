@@ -15,6 +15,10 @@ module Devise
         Backend.for(:delayed_job).must_equal Backend::DelayedJob
       end
 
+      it "gives queue classic as the backend" do
+        Backend.for(:queue_classic).must_equal Backend::QueueClassic
+      end
+
       it "alerts about unsupported backend" do
         assert_raises ArgumentError do
           Backend.for(:unsupported_backend)
