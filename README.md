@@ -91,6 +91,14 @@ Devise::Async.setup do |config|
 end
 ```
 
+## Testing
+
+Be aware that since version 0.3.0 devise-async enqueues the background job in active
+record's `after_commit` hook. If you're using rspec's `use_transactional_fixtures` the jobs
+might not be enqueued as you'd expect.
+
+More details in this stackoverflow [thread](http://stackoverflow.com/questions/13406248/how-do-i-get-devise-async-working-with-cucumber/13465089#13465089).
+
 ## Contributing
 
 1. Fork it
