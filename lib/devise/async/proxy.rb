@@ -1,6 +1,5 @@
 module Devise
   module Async
-    # TODO remove when appropriate
     class Proxy
       # Catches all devise emails
       def self.method_missing(method, *args, &block)
@@ -8,7 +7,6 @@ module Devise
       end
 
       def initialize(method, resource)
-        puts "DEPRECATION WARNING: Devise::Async::Proxy is deprecated and Devise < 2.1.1 will be no longer supported by DeviseAsync when 1.0.0 is released. Please open a ticket and let me know if you have a reason to keep using it this way."
         @method, @resource = method, resource
       end
 

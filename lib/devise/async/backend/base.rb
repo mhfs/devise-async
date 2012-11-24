@@ -18,7 +18,6 @@ module Devise
         private
 
         def mailer_class
-          # TODO switch to Devise.mailer when Devise::Async::Proxy is removed.
           @mailer_class ||= Devise::Async.mailer.constantize
         end
       end

@@ -53,8 +53,11 @@ Set `Devise::Async::Proxy` as Devise's mailer in `config/initializers/devise.rb`
 config.mailer = "Devise::Async::Proxy"
 ```
 
-Note: before devise 2.1.1 devise-async had issues with background jobs trying to run
+WARNING 1: before devise 2.1.1 devise-async had issues with background jobs trying to run
 before the record was committed to the DB if the creation was transactioned.
+
+WARNING 2: I intend to deprecate support for devise < 2.1.1 before 1.0.0 and drop support
+in the 1.0.0 release. Please consider upgrading your Devise version.
 
 ## Advanced Options
 
