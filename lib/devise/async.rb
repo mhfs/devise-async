@@ -34,7 +34,8 @@ module Devise
     #
     #     Devise::Async.setup do |config|
     #       config.backend = :resque
-    #       config.mailer = "MyMailer"
+    #       config.mailer  = "MyMailer"
+    #       config.queue   = :my_custom_queue
     #     end
     def self.setup
       yield self
@@ -42,20 +43,5 @@ module Devise
   end
 end
 
-# Just to be compatible with first release
-# TODO remove when appropriate
-module DeviseAsync
-  class Proxy < Devise::Async::Proxy
-    def initialize(method, resource)
-      puts "DEPRECATION WARNING: DeviseAsync::Proxy has been deprecated. Please use Devise::Async::Proxy."
-      super
-    end
-  end
-
-  def self.backend=(value)
-    puts "DEPRECATION WARNING: `DeviseAsync.backend=` has been deprecated. Please use `Devise::Async.backend=`."
-    Devise::Async.backend = value
-  end
-end
-
+# Register devise-async model in Devise
 Devise.add_module(:async, :model => 'devise/async/model')

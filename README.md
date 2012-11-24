@@ -70,8 +70,8 @@ Devise::Async.mailer = "MyCustomMailer"
 
 ### Custom queue
 
-Let you specify a custom queue where to enqueue your background Devise jobs. Works
-only for Resque, Sidekiq and QueueClassic. Defaults to :mailer.
+Let you specify a custom queue where to enqueue your background Devise jobs.
+Defaults to :mailer.
 
 ```ruby
 # config/initializers/devise_async.rb

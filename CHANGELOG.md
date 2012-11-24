@@ -1,5 +1,13 @@
 ## Unreleased
 
+## 0.5.0
+
+* Added support for QueueClassic (jperville)
+* Remove deprecated `DeviseAsync::Proxy` and `DeviseAsync.backend=`
+* Deprecate Devise::Async::Proxy to announce that we will no longer support
+  Devise < 2.1.1
+* Improved comments throughout code
+
 ## 0.4.0
 
 * Enhancements
