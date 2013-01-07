@@ -12,7 +12,7 @@ module Devise
       
       it "immediately sends notifications when the model has not changed" do
         admin = create_admin
-        Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s)
+        Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s, nil)
         admin.send_confirmation_instructions
       end
       
@@ -33,7 +33,30 @@ module Devise
           admin.send_confirmation_instructions
           admin.send(:devise_pending_notifications).must_equal [:confirmation_instructions]
           admin.save
-          Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s)
+          Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s, nil)
+        end
+      end
+
+      it "uses default options" do
+        user = create_user
+        User.transaction do
+          user[:username] = "changed_username"
+          user.send_confirmation_instructions
+          user.send(:devise_pending_notifications).must_equal [:confirmation_instructions]
+          user.save
+          Worker.expects(:enqueue).with(:confirmation_instructions, "User", user.id.to_s, {})
+        end
+      end
+
+      it "uses non default options" do
+        user = create_user
+        User.any_instance.stubs(:mail_options).returns({:a => 1})
+        User.transaction do
+          user[:username] = "changed_username"
+          user.send_confirmation_instructions
+          user.send(:devise_pending_notifications).must_equal [:confirmation_instructions]
+          user.save
+          Worker.expects(:enqueue).with(:confirmation_instructions, "User", user.id.to_s, {:a => 1})
         end
       end
     end

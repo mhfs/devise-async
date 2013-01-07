@@ -28,14 +28,24 @@ module Devise
     mattr_accessor :queue
     @@queue = :mailer
 
+    # Defines whether the callback hook should be called on the model. Note this uses
+    # respond_to? so can be left on for models that don't have the method. This expects
+    # a method called *mail_sent* to exist on the model and it will be passed the template
+    # that devise has mailed out. This allows any logging or processing that needs to
+    # occur after a mail has actually gone out to be handled. Note that it does not
+    # guarantee mail delivery; just that it has left the rails system!
+    mattr_accessor :callback
+    @@callback = false
+
     # Allow configuring Devise::Async with a block
     #
     # Example:
     #
     #     Devise::Async.setup do |config|
-    #       config.backend = :resque
-    #       config.mailer  = "MyMailer"
-    #       config.queue   = :my_custom_queue
+    #       config.backend  = :resque
+    #       config.mailer   = "MyMailer"
+    #       config.queue    = :my_custom_queue
+    #       config.callback = true
     #     end
     def self.setup
       yield self

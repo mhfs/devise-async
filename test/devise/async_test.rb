@@ -16,9 +16,15 @@ module Devise
       Async.mailer.must_equal "MyMailer"
     end
 
+    it "stores callback" do
+      Async.callback = true
+      Async.callback.must_equal true
+    end
+
     after do
       Async.backend = :resque
       Async.mailer = "Devise::Mailer"
+      Async.callback = false
     end
   end
 end

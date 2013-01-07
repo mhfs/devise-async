@@ -12,7 +12,7 @@ module Devise
         it "delegates to devise mailer when delivering" do
           user = create_user
           ActionMailer::Base.deliveries = []
-          Backend::Resque.perform(:confirmation_instructions, "User", user.id)
+          Backend::Resque.perform(:confirmation_instructions, "User", user.id, user.mail_options(:confirmation_instructions))
           ActionMailer::Base.deliveries.size.must_equal 1
         end
 
@@ -20,6 +20,11 @@ module Devise
           expected_size = 1 + ::Resque.size(:custom_queue)
           Resque.enqueue(:mailer_method, "User", 123)
           ::Resque.size(:custom_queue).must_equal expected_size
+        end
+
+        it "enqueues with options" do
+          ::Resque.expects(:enqueue).with(Resque, :mailer_method, "User", 123, {})
+          Resque.enqueue(:mailer_method, "User", 123, {})
         end
       end
     end
