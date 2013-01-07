@@ -15,7 +15,7 @@ module Devise
         it "delegates to devise mailer when delivering" do
           user = create_user
           ActionMailer::Base.deliveries = []
-          Backend::DelayedJob.new.perform(:confirmation_instructions, "User", user.id)
+          Backend::DelayedJob.new.perform(:confirmation_instructions, "User", user.id, user.mail_options(:confirmation_instructions))
           ActionMailer::Base.deliveries.size.must_equal 1
         end
       end

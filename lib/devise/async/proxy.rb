@@ -13,7 +13,7 @@ module Devise
       def deliver
         # Use `id.to_s` to avoid problems with mongoid 2.4.X ids being serialized
         # wrong with YAJL.
-        Worker.enqueue(@method, @resource.class.name, @resource.id.to_s)
+        Worker.enqueue(@method, @resource.class.name, @resource.id.to_s, @resource.mail_options(@method))
       end
     end
   end

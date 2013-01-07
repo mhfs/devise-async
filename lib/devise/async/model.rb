@@ -43,7 +43,7 @@ module Devise
         # If the record isn't dirty (aka has already been saved) enqueue right away
         # because the callback has already been triggered.
         else
-          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s)
+          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s, mail_options(notification))
         end
       end
 
@@ -52,13 +52,28 @@ module Devise
         devise_pending_notifications.each do |notification|
           # Use `id.to_s` to avoid problems with mongoid 2.4.X ids being serialized
           # wrong with YAJL.
-          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s)
+          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s, mail_options(notification))
         end
         @devise_pending_notifications = []
       end
 
       def devise_pending_notifications
         @devise_pending_notifications ||= []
+      end
+
+      def mail_options(notification)
+        # Can be overridden to allow extra options to be passed through when
+        # sending that are not on the model. Each model implementing :async
+        # can implement as necessary or leave to the default one. Returning
+        # nil ensures options are not used. However if they are used a custom
+        # mailer is required that accepts method calls of the form:
+        #
+        # def reset_password_instructions(record, options)
+        #   ...
+        # end
+        #
+        # By default, the devise mailer only takes record.
+        nil
       end
     end
   end
