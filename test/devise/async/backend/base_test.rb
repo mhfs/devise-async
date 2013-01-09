@@ -10,7 +10,7 @@ module Devise
           mailer_instance = mock(:deliver => true)
 
           MyMailer.expects(:confirmation_instructions).once.returns(mailer_instance)
-          Base.new.perform(:confirmation_instructions, "User", user.id)
+          Base.new.perform(:confirmation_instructions, "User", user.id, {})
         end
 
         after do
