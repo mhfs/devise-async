@@ -35,24 +35,24 @@ module Devise
       # to capture all email notifications and enqueue it for background
       # processing instead of sending it inline as devise does by
       # default.
-      def send_devise_notification(notification)
+      def send_devise_notification(notification, opts = {})
         # If the record is dirty we keep pending notifications to be enqueued
         # by the callback and avoid before commit job processing.
         if changed?
-          devise_pending_notifications << notification
+          devise_pending_notifications << [ notification, opts ]
         # If the record isn't dirty (aka has already been saved) enqueue right away
         # because the callback has already been triggered.
         else
-          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s)
+          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s, opts)
         end
       end
 
       # Send all pending notifications.
       def send_devise_pending_notifications
-        devise_pending_notifications.each do |notification|
+        devise_pending_notifications.each do |notification, opts|
           # Use `id.to_s` to avoid problems with mongoid 2.4.X ids being serialized
           # wrong with YAJL.
-          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s)
+          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s, opts)
         end
         @devise_pending_notifications = []
       end

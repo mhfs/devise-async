@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Devise::Async::VERSION
 
-  gem.add_dependency "devise", ">= 1.1"
+  gem.add_dependency "devise", ">= 2.2"
 
   gem.add_development_dependency "activerecord",              "~> 3.2"
   gem.add_development_dependency "actionpack",                "~> 3.2"
