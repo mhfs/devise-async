@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.5.1
+
+* Lock dependency of 0.5 series on devise < 2.2
+
 ## 0.5.0
 
 * Added support for QueueClassic (jperville)
