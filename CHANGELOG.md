@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.6.0
+
 * Now compatible with Devise 2.2+ only
 * Legacy `Devise::Async::Proxy` is now gone
 * `Devise::Async.mailer=` is gone since there's no need for it anymore.
