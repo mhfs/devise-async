@@ -1,5 +1,11 @@
 ## Unreleased
 
+* Now compatible with Devise 2.2+ only
+* Legacy `Devise::Async::Proxy` is now gone
+* `Devise::Async.mailer=` is gone since there's no need for it anymore.
+  Use `Devise.mailer` directly.
+
+
 ## 0.5.0
 
 * Added support for QueueClassic (jperville)

@@ -5,7 +5,7 @@ module Devise
     module Backend
       describe "Base" do
         it "delegates to configured mailer" do
-          Async.mailer = "MyMailer"
+          Devise.mailer = "MyMailer"
           user = create_user
           mailer_instance = mock(:deliver => true)
 
@@ -14,7 +14,7 @@ module Devise
         end
 
         after do
-          Async.mailer = "Devise::Mailer"
+          Devise.mailer = "Devise::Mailer"
         end
       end
     end

@@ -44,32 +44,14 @@ Devise::Async.backend = :resque
 
 Tip: it defaults to Resque. You don't need to create the initializer if using it.
 
-### Devise < 2.1.1
-
-Set `Devise::Async::Proxy` as Devise's mailer in `config/initializers/devise.rb`:
-
-```ruby
-# Configure the class responsible to send e-mails.
-config.mailer = "Devise::Async::Proxy"
-```
-
-WARNING 1: before devise 2.1.1 devise-async had issues with background jobs trying to run
-before the record was committed to the DB if the creation was transactioned.
-
-WARNING 2: I intend to deprecate support for devise < 2.1.1 before 1.0.0 and drop support
-in the 1.0.0 release. Please consider upgrading your Devise version.
-
 ## Advanced Options
 
 ### Custom mailer class
 
-If you inherit `Devise::Mailer` to a class of your own for customization purposes,
-you'll need to tell `Devise::Async` to proxy to that class.
+Customize `Devise.mailer` at will and `devise-async` will honor it.
 
-```ruby
-# config/initializers/devise_async.rb
-Devise::Async.mailer = "MyCustomMailer"
-```
+Upgrade note: if you're upgrading from any version < 0.6 and getting errors
+trying to set `Devise::Async.mailer` just use `Devise.mailer` instead.
 
 ### Custom queue
 
@@ -90,7 +72,6 @@ similar do what `Devise` offers.
 # config/initializers/devise_async.rb
 Devise::Async.setup do |config|
   config.backend = :resque
-  config.mailer  = "MyCustomMailer"
   config.queue   = :my_custom_queue
 end
 ```
@@ -102,6 +83,12 @@ record's `after_commit` hook. If you're using rspec's `use_transactional_fixture
 might not be enqueued as you'd expect.
 
 More details in this stackoverflow [thread](http://stackoverflow.com/questions/13406248/how-do-i-get-devise-async-working-with-cucumber/13465089#13465089).
+
+## Devise < 2.2
+
+Older versions of Devise are supported in the [devise_2_1](https://github.com/mhfs/devise-async/tree/devise_2_1) branch and in the 0.5 series of devise-async.
+
+Please refer to that branch README for further info.
 
 ## Contributing
 

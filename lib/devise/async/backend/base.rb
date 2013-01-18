@@ -18,7 +18,7 @@ module Devise
         private
 
         def mailer_class
-          @mailer_class ||= Devise::Async.mailer.constantize
+          @mailer_class ||= Devise.mailer
         end
       end
     end

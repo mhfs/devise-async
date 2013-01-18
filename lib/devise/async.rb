@@ -3,7 +3,6 @@ require "devise/async/version"
 
 module Devise
   module Async
-    autoload :Proxy,   "devise/async/proxy"
     autoload :Worker,  "devise/async/worker"
     autoload :Backend, "devise/async/backend"
     autoload :Model,   "devise/async/model"
@@ -19,10 +18,6 @@ module Devise
     # Defines the queue backend to be used. Resque by default.
     mattr_accessor :backend
     @@backend = :resque
-
-    # Defines the mailer class to be used. Devise::Mailer by default.
-    mattr_accessor :mailer
-    @@mailer = "Devise::Mailer"
 
     # Defines the queue in which the background job will be enqueued. Default is :mailer.
     mattr_accessor :queue
