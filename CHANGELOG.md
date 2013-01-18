@@ -5,6 +5,9 @@
 * `Devise::Async.mailer=` is gone since there's no need for it anymore.
   Use `Devise.mailer` directly.
 
+## 0.5.1
+
+* Lock dependency of 0.5 series on devise < 2.2
 
 ## 0.5.0
 
