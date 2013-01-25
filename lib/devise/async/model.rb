@@ -36,14 +36,18 @@ module Devise
       # processing instead of sending it inline as devise does by
       # default.
       def send_devise_notification(notification, opts = {})
-        # If the record is dirty we keep pending notifications to be enqueued
-        # by the callback and avoid before commit job processing.
-        if changed?
-          devise_pending_notifications << [ notification, opts ]
-        # If the record isn't dirty (aka has already been saved) enqueue right away
-        # because the callback has already been triggered.
+        if Devise::Async.enabled
+          # If the record is dirty we keep pending notifications to be enqueued
+          # by the callback and avoid before commit job processing.
+          if changed?
+            devise_pending_notifications << [ notification, opts ]
+          # If the record isn't dirty (aka has already been saved) enqueue right away
+          # because the callback has already been triggered.
+          else
+            Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s, opts)
+          end
         else
-          Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s, opts)
+          super # Calling the devise's original method
         end
       end
 
