@@ -29,7 +29,6 @@ module Devise
     #
     #     Devise::Async.setup do |config|
     #       config.backend = :resque
-    #       config.mailer  = "MyMailer"
     #       config.queue   = :my_custom_queue
     #     end
     def self.setup
