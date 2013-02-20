@@ -36,6 +36,8 @@ module Devise
       # processing instead of sending it inline as devise does by
       # default.
       def send_devise_notification(notification, opts = {})
+        return super unless Devise::Async.enabled
+        
         # If the record is dirty we keep pending notifications to be enqueued
         # by the callback and avoid before commit job processing.
         if changed?
