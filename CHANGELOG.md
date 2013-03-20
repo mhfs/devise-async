@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 0.7.0
+
+* make sure options hash has string keys when enqueued and symbol keys when job runs
+* stringfy options keys before enqueueing to make queue_classic happy (nickw)
+* Added `enable` options to make it easier to skip async processing during tests (mohamedmagdy)
+
 ## 0.6.0
 
 * Now compatible with Devise 2.2+ only
