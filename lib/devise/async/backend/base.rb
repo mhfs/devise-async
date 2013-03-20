@@ -12,6 +12,7 @@ module Devise
         # compatibility among diferent ORMs.
         def perform(method, resource_class, resource_id, opts)
           resource = resource_class.constantize.to_adapter.get!(resource_id)
+          opts.symbolize_keys!
           mailer_class.send(method, resource, opts).deliver
         end
 
