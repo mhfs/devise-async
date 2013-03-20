@@ -26,7 +26,7 @@ module Devise
     # Defines the enabled configuration that if set to false the emails will be sent synchronously
     mattr_accessor :enabled
     @@enabled = true
-    
+
     # Allow configuring Devise::Async with a block
     #
     # Example:
