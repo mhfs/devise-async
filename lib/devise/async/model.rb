@@ -1,15 +1,4 @@
 module Devise
-  # TODO remove when appropriate
-  module Async
-    module Model
-      extend ActiveSupport::Concern
-
-      included do
-        warn "Including Devise::Async::Model directly in your models is no longer supported and won't work. Please add `:async` to your `devise` call."
-      end
-    end
-  end
-
   module Models
     module Async
       extend ActiveSupport::Concern
@@ -37,7 +26,7 @@ module Devise
       # default.
       def send_devise_notification(notification, opts = {})
         return super unless Devise::Async.enabled
-        
+
         # If the record is dirty we keep pending notifications to be enqueued
         # by the callback and avoid before commit job processing.
         if changed?
