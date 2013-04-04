@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Added torquebox support (astjohn)
+
 ## 0.7.0
 
 * make sure options hash has string keys when enqueued and symbol keys when job runs
