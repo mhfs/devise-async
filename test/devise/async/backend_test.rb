@@ -19,6 +19,10 @@ module Devise
         Backend.for(:queue_classic).must_equal Backend::QueueClassic
       end
 
+      it "gives torquebox as the backend" do
+        Backend.for(:torquebox).must_equal Backend::Torquebox
+      end
+
       it "alerts about unsupported backend" do
         assert_raises ArgumentError do
           Backend.for(:unsupported_backend)

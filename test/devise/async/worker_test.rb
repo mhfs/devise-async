@@ -30,6 +30,13 @@ module Devise
         Backend::QueueClassic.expects(:enqueue).with(:mailer_method, "User", 123, {})
         Worker.enqueue(:mailer_method, "User", 123, {})
       end
+
+      it "enqueues job using the torquebox backend" do
+        Devise::Async.backend = :torquebox
+
+        Backend::Torquebox.expects(:enqueue).with(:mailer_method, "User", 123, {})
+        Worker.enqueue(:mailer_method, "User", 123, {})
+      end
     end
   end
 end

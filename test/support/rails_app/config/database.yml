@@ -1,5 +1,12 @@
-test:
-  adapter: sqlite3
+default: &defaults
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
+
+test-ruby:
+  <<: *defaults
+  adapter: sqlite3
+
+test-jruby:
+  <<: *defaults
+  adapter: jdbcsqlite3
