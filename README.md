@@ -47,6 +47,12 @@ Tip: it defaults to Resque. You don't need to create the initializer if using it
 
 ## Advanced Options
 
+### Enabling via config
+
+The gem can be enabled/disabled easily via config, for example based on environment.
+
+Devise::Async.enabled = true # | false
+
 ### Custom mailer class
 
 Customize `Devise.mailer` at will and `devise-async` will honor it.
@@ -72,6 +78,7 @@ similar do what `Devise` offers.
 ```ruby
 # config/initializers/devise_async.rb
 Devise::Async.setup do |config|
+  config.enabled = true
   config.backend = :resque
   config.queue   = :my_custom_queue
 end
