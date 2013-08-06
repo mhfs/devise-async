@@ -7,7 +7,7 @@ module Devise
       # to the desired backend.
       def enqueue(method, resource_class, resource_id, *args)
         # convert args to strings and hashes with string keys before passing to backend
-        args = stringify_args(args)
+        args = stringify_args args
         backend_class.enqueue(method, resource_class, resource_id, *args)
       end
 
@@ -17,7 +17,7 @@ module Devise
         args.map do |a|
           case a
             when Hash
-              a.stringify_keys!
+              a.stringify_keys
             when Symbol
               a.to_s
             else
