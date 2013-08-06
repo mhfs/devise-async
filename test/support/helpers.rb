@@ -5,10 +5,10 @@ def valid_attributes(attributes={})
     :password_confirmation => '12345678' }.update(attributes)
 end
 
-def generate_unique_email
-  @@email_count ||= 0
-  @@email_count += 1
-  "test#{@@email_count}@example.com"
+email_count = 0
+define_method :generate_unique_email do
+  email_count += 1
+  "test#{email_count}@example.com"
 end
 
 def new_user(attributes={})
