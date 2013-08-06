@@ -10,10 +10,10 @@ module Devise
         #
         # It uses `orm_adapter` API to fetch the record in order to enforce
         # compatibility among diferent ORMs.
-        def perform(method, resource_class, resource_id, opts)
+        def perform(method, resource_class, resource_id, *args)
           resource = resource_class.constantize.to_adapter.get!(resource_id)
-          opts.symbolize_keys!
-          mailer_class.send(method, resource, opts).deliver
+          args[-1] = args.last.symbolize_keys if args.last.is_a?(Hash)
+          mailer_class.send(method, resource, *args).deliver
         end
 
         private

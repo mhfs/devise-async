@@ -15,7 +15,9 @@ require "sidekiq/testing"
 require "torquebox-no-op"
 
 require "support/rails_app"
-require "support/helpers"
+require "support/test_helpers"
 require "support/my_mailer"
+
+include TestHelpers
 
 load File.dirname(__FILE__) + "/support/rails_app/db/schema.rb"

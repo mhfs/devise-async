@@ -6,7 +6,7 @@ module Devise
       it "accumulates notifications to be sent after commit on Model creation" do
         Admin.transaction do
           admin = create_admin
-          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, {}]]
+          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, []]]
         end
       end
 
@@ -21,7 +21,7 @@ module Devise
         Admin.transaction do
           admin[:username] = "changed_username"
           admin.send_confirmation_instructions
-          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, {}]]
+          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, [{}]]]
           Worker.expects(:enqueue).never # after_commit will not fire without save
         end
       end
@@ -31,7 +31,7 @@ module Devise
         Admin.transaction do
           admin[:username] = "changed_username"
           admin.send_confirmation_instructions
-          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, {}]]
+          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, [{}]]]
           admin.save
           Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s, {})
         end
