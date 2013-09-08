@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    devise-async (0.7.0)
+    devise-async (0.8.0)
       devise (>= 2.2, < 3.2)
 
 GEM
