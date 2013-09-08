@@ -12,7 +12,7 @@ module Devise
 
       it "immediately sends notifications when the model has not changed" do
         admin = create_admin
-        Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s, {})
+        Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s, instance_of(String), {})
         admin.send_confirmation_instructions
       end
 
