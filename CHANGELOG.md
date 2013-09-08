@@ -1,5 +1,8 @@
 ## Unreleased
 
+## 0.8.0
+
+* Support arbitrary number of arguments to mailer (glebm)
 * Added torquebox support (astjohn)
 
 ## 0.7.0
