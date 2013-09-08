@@ -15,11 +15,11 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Devise::Async::VERSION
 
-  gem.add_dependency "devise", ">= 2.2"
+  gem.add_dependency "devise", ">= 2.2", "< 3.2"
 
-  gem.add_development_dependency "activerecord",              "~> 3.2"
-  gem.add_development_dependency "actionpack",                "~> 3.2"
-  gem.add_development_dependency "actionmailer",              "~> 3.2"
+  gem.add_development_dependency "activerecord",              ">= 3.2", "< 4.1"
+  gem.add_development_dependency "actionpack",                ">= 3.2", "< 4.1"
+  gem.add_development_dependency "actionmailer",              ">= 3.2", "< 4.1"
   gem.add_development_dependency "sqlite3",                   "~> 1.3"
   gem.add_development_dependency "resque",                    "~> 1.20"
   gem.add_development_dependency "sidekiq",                   "~> 1.2"
