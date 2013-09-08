@@ -130,9 +130,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionmailer (>= 3.2, < 4.1)
-  actionpack (>= 3.2, < 4.1)
-  activerecord (>= 3.2, < 4.1)
+  actionmailer (>= 3.2)
+  actionpack (>= 3.2)
+  activerecord (>= 3.2)
   delayed_job_active_record (~> 0.3)
   devise-async!
   minitest (~> 3.0)
