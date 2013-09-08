@@ -11,8 +11,8 @@ module Devise
           queue.enqueue(*args)
         end
 
-        def self.perform(method, resource_class, resource_id, opts)
-          new.perform(method, resource_class, resource_id, opts)
+        def self.perform(*args)
+          new.perform(*args)
         end
       end
     end
