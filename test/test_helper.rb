@@ -1,4 +1,6 @@
-ENV["RAILS_ENV"] = "test"
+engine = defined?(JRUBY_VERSION) ? 'jruby' : 'ruby'
+
+ENV["RAILS_ENV"] = "test-#{engine}"
 
 require "minitest/autorun"
 require "minitest/spec"
