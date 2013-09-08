@@ -6,7 +6,13 @@ module Devise
       it "accumulates notifications to be sent after commit on Model creation" do
         Admin.transaction do
           admin = create_admin
-          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, []]]
+          mailers = admin.send(:devise_pending_notifications) # [:confirmation_instructions, ["RUQUib67wLcCiEyZMwfx", {}]]
+          mailers.size.must_equal 1
+
+          mailer = mailers.first
+          mailer.size.must_equal 2
+          mailer.first.must_equal :confirmation_instructions
+          mailer.last.must_be_instance_of Array
         end
       end
 
@@ -21,7 +27,15 @@ module Devise
         Admin.transaction do
           admin[:username] = "changed_username"
           admin.send_confirmation_instructions
-          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, [{}]]]
+
+          mailers = admin.send(:devise_pending_notifications) # [:confirmation_instructions, ["RUQUib67wLcCiEyZMwfx", {}]]
+          mailers.size.must_equal 1
+
+          mailer = mailers.first
+          mailer.size.must_equal 2
+          mailer.first.must_equal :confirmation_instructions
+          mailer.last.must_be_instance_of Array
+
           Worker.expects(:enqueue).never # after_commit will not fire without save
         end
       end
@@ -31,9 +45,17 @@ module Devise
         Admin.transaction do
           admin[:username] = "changed_username"
           admin.send_confirmation_instructions
-          admin.send(:devise_pending_notifications).must_equal [[:confirmation_instructions, [{}]]]
+
+          mailers = admin.send(:devise_pending_notifications) # [:confirmation_instructions, ["RUQUib67wLcCiEyZMwfx", {}]]
+          mailers.size.must_equal 1
+
+          mailer = mailers.first
+          mailer.size.must_equal 2
+          mailer.first.must_equal :confirmation_instructions
+          mailer.last.must_be_instance_of Array
+
           admin.save
-          Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s, {})
+          Worker.expects(:enqueue).with(:confirmation_instructions, "Admin", admin.id.to_s, instance_of(String), {})
         end
       end
 
