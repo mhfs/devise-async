@@ -18,8 +18,8 @@ module Devise
 
         private
 
-        def mailer_class
-          @mailer_class ||= Devise.mailer
+        def mailer_class(ressource=nil)
+          @mailer_class ||= ressource.try(:devise_mailer) || Devise.mailer
         end
       end
     end
