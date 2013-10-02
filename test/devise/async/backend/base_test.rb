@@ -4,13 +4,27 @@ module Devise
   module Async
     module Backend
       describe "Base" do
-        it "delegates to configured mailer" do
-          Devise.mailer = "MyMailer"
-          user = create_user
-          mailer_instance = mock(:deliver => true)
 
-          MyMailer.expects(:confirmation_instructions).once.returns(mailer_instance)
-          Base.new.perform(:confirmation_instructions, "User", user.id, {})
+        before do
+          Devise.mailer = "MyMailer"
+          @user = create_user
+        end
+
+        it "delegates to configured mailer" do
+          @mailer_instance = mock(:deliver => true)
+
+          MyMailer.expects(:confirmation_instructions).once.returns(@mailer_instance)
+          Base.new.perform(:confirmation_instructions, "User", @user.id, {})
+        end
+
+        it "executes within the locale scope if a locale is given via args" do
+          I18n.expects(:with_locale).once.with(:de)
+          Base.new.perform(:confirmation_instructions, "User", @user.id, { 'locale' => :de })
+        end
+
+        it "does not execute within the locale scope if no locale is given via args" do
+          I18n.expects(:"locale=").never
+          Base.new.perform(:confirmation_instructions, "User", @user.id, {})
         end
 
         after do
