@@ -4,6 +4,7 @@ module Devise
   module Async
     module Backend
       describe "Base" do
+
         it "delegates to configured mailer" do
           Devise.mailer = "MyMailer"
           user = create_user
@@ -11,6 +12,14 @@ module Devise
 
           MyMailer.expects(:confirmation_instructions).once.returns(mailer_instance)
           Base.new.perform(:confirmation_instructions, "User", user.id, {})
+        end
+
+        it "delegates to model configured mailer" do
+          user = create_user_with_mailer
+          mailer_instance = mock(:deliver => true)
+
+          MyMailer.expects(:confirmation_instructions).once.returns(mailer_instance)
+          Base.new.perform(:confirmation_instructions, "UserWithMailer", user.id, {})
         end
 
         after do
