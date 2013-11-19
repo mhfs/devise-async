@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 0.9.0
+
+* Multiple mailers support (baschtl)
+* Update devise dependency to ~3.2
+
 ## 0.8.0
 
 * Support arbitrary number of arguments to mailer (glebm)
