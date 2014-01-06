@@ -17,14 +17,14 @@ module Devise
           I18n.with_locale locale_from_args(args) do
             resource = resource_class.constantize.to_adapter.get!(resource_id)
             args[-1] = args.last.symbolize_keys if args.last.is_a?(Hash)
-            mailer_class.send(method, resource, *args).deliver
+            mailer_class(resource).send(method, resource, *args).deliver
           end
         end
 
         private
 
-        def mailer_class
-          @mailer_class ||= Devise.mailer
+        def mailer_class(resource = nil)
+          @mailer_class ||= resource.try(:devise_mailer) || Devise.mailer
         end
 
         def locale_from_args(args)
