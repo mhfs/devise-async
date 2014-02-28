@@ -17,6 +17,13 @@ module Devise
         Worker.enqueue(:mailer_method, "User", 123, {})
       end
 
+      it "enqueues job using the backburner backend" do
+        Devise::Async.backend = :backburner
+
+        Backend::Backburner.expects(:enqueue).with(:mailer_method, "User", 123, {})
+        Worker.enqueue(:mailer_method, "User", 123, {})
+      end
+
       it "enqueues job using the delayed job backend" do
         Devise::Async.backend = :delayed_job
 

@@ -9,6 +9,7 @@ module Devise
 
     module Backend
       autoload :Base,         "devise/async/backend/base"
+      autoload :Backburner,   "devise/async/backend/backburner"
       autoload :Resque,       "devise/async/backend/resque"
       autoload :Sidekiq,      "devise/async/backend/sidekiq"
       autoload :DelayedJob,   "devise/async/backend/delayed_job"
