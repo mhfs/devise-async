@@ -25,6 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "sidekiq",                   "~> 1.2"
   gem.add_development_dependency "delayed_job_active_record", "~> 0.3"
   gem.add_development_dependency "queue_classic",             "~> 2.0"
+  gem.add_development_dependency "backburner",                "~> 0.4"
   gem.add_development_dependency "mocha",                     "~> 0.11"
   gem.add_development_dependency "minitest",                  "~> 3.0"
   gem.add_development_dependency "torquebox-no-op",           "~> 2.3"

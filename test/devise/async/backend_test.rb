@@ -11,6 +11,10 @@ module Devise
         Backend.for(:sidekiq).must_equal Backend::Sidekiq
       end
 
+      it "gives backburner as the backend" do
+        Backend.for(:backburner).must_equal Backend::Backburner
+      end
+
       it "gives delayed job as the backend" do
         Backend.for(:delayed_job).must_equal Backend::DelayedJob
       end
