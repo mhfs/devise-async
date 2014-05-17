@@ -29,4 +29,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "mocha",                     "~> 0.11"
   gem.add_development_dependency "minitest",                  "~> 3.0"
   gem.add_development_dependency "torquebox-no-op",           "~> 2.3"
+  gem.add_development_dependency "sneakers",                  "~> 0.0"
 end

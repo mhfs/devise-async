@@ -15,6 +15,7 @@ module Devise
       autoload :DelayedJob,   "devise/async/backend/delayed_job"
       autoload :QueueClassic, "devise/async/backend/queue_classic"
       autoload :Torquebox,    "devise/async/backend/torquebox"
+      autoload :Sneakers,     "devise/async/backend/sneakers"
     end
 
     # Defines the queue backend to be used. Resque by default.
