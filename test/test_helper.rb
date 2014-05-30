@@ -14,7 +14,7 @@ require "backburner"
 require "delayed_job_active_record"
 require "sidekiq/testing"
 require "torquebox-no-op"
-require "support/sucker_punch_inline"
+require "sucker_punch/testing/inline"
 
 require "support/rails_app"
 require "support/test_helpers"
