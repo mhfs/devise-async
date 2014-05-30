@@ -17,12 +17,6 @@ module Devise
             super
           end
         end
-
-        private
-
-        def mailer_class(resource = nil)
-          @mailer_class ||= Devise.mailer
-        end
       end
     end
   end
