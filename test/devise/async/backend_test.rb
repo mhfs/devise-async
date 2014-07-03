@@ -23,6 +23,10 @@ module Devise
         Backend.for(:queue_classic).must_equal Backend::QueueClassic
       end
 
+      it "gives sucker punch as the backend" do
+        Backend.for(:sucker_punch).must_equal Backend::SuckerPunch
+      end
+
       it "alerts about unsupported backend" do
         assert_raises ArgumentError do
           Backend.for(:unsupported_backend)
