@@ -5,6 +5,8 @@ require "minitest/spec"
 require "minitest/mock"
 require "mocha/setup"
 
+require "action_controller"
+
 require "devise"
 require "devise/async"
 require "rails/all"
