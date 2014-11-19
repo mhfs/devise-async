@@ -14,6 +14,7 @@ require "backburner"
 require "delayed_job_active_record"
 require "sidekiq/testing"
 require "torquebox-no-op"
+require "que"
 
 require "support/rails_app"
 require "support/test_helpers"
