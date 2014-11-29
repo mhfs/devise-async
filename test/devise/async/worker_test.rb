@@ -44,6 +44,13 @@ module Devise
         Backend::SuckerPunch.expects(:enqueue).with(:mailer_method, "User", 123, {})
         Worker.enqueue(:mailer_method, "User", 123, {})
       end
+
+      it "enqueues job using the que backend" do
+        Devise::Async.backend = :que
+
+        Backend::Que.expects(:enqueue).with(:mailer_method, "User", 123, {})
+        Worker.enqueue(:mailer_method, "User", 123, {})
+      end
     end
   end
 end
