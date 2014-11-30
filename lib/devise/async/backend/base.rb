@@ -19,7 +19,11 @@ module Devise
         private
 
         def mailer_class(resource = nil)
-          @mailer_class ||= resource.try(:devise_mailer) || Devise.mailer
+          begin
+            @mailer_class ||= resource.try(:devise_mailer) || Devise.mailer
+          rescue NoMethodError
+            @mailer_class = Devise.mailer
+          end
         end
       end
     end
