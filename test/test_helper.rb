@@ -25,3 +25,5 @@ require "support/my_mailer"
 include TestHelpers
 
 load File.dirname(__FILE__) + "/support/rails_app/db/schema.rb"
+
+I18n.enforce_available_locales = false
