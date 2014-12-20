@@ -27,12 +27,14 @@ module Devise
       def send_devise_notification(notification, *args)
         return super unless Devise::Async.enabled
 
-        # If the record is dirty we keep pending notifications to be enqueued
-        # by the callback and avoid before commit job processing.
-        if changed?
+        # If the record is dirty or the ORM supports after_commit hooks, we
+        # keep pending notifications to be enqueued by the callback and avoid
+        # before commit job processing.
+        if changed? || self.class.respond_to?(:after_commit)
           devise_pending_notifications << [ notification, args ]
-        # If the record isn't dirty (aka has already been saved) enqueue right away
-        # because the callback has already been triggered.
+        # If the record isn't dirty (aka has already been saved) and ORM
+        # doesn't support after_commit hooks enqueue right away because the
+        # callback has already been triggered.
         else
           Devise::Async::Worker.enqueue(notification, self.class.name, self.id.to_s, *args)
         end
