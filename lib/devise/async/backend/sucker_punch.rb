@@ -17,8 +17,8 @@ module Devise
             ActiveRecord::Base.connection_pool.with_connection do
               super
             end
-          else
-            super
+          else # mongoid
+            super(method, resource_class, resource_id, *args)
           end
         end
       end
