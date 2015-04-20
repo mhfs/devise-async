@@ -13,6 +13,7 @@ Supported backends:
 * Torquebox
 * Backburner
 * Que
+* SuckerPunch
 
 ## Installation
 
