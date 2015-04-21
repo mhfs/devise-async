@@ -13,6 +13,7 @@ Supported backends:
 * Torquebox
 * Backburner
 * Que
+* SuckerPunch
 
 ## Installation
 
@@ -43,7 +44,7 @@ end
 Set your queuing backend by creating `config/initializers/devise_async.rb`:
 
 ```ruby
-# Supported options: :resque, :sidekiq, :delayed_job, :queue_classic, :torquebox, :backburner, :que
+# Supported options: :resque, :sidekiq, :delayed_job, :queue_classic, :torquebox, :backburner, :que, :sucker_punch
 Devise::Async.backend = :resque
 ```
 
