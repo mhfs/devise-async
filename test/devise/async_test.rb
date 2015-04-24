@@ -16,6 +16,11 @@ module Devise
       Async.backend.must_equal false
     end
 
+    it "stores delayed_job_priority config" do
+      Async.delayed_job_priority = -1
+      Async.delayed_job_priority.must_equal -1
+    end
+
     after do
       Async.backend = :resque
     end

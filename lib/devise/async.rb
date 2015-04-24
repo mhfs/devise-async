@@ -31,6 +31,10 @@ module Devise
     mattr_accessor :enabled
     @@enabled = true
 
+    # Defines the delayed job priority.
+    mattr_accessor :delayed_job_priority
+    @@delayed_job_priority = 0
+
     # Allow configuring Devise::Async with a block
     #
     # Example:

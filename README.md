@@ -78,6 +78,16 @@ Defaults to :mailer.
 Devise::Async.queue = :my_custom_queue
 ```
 
+### Delayed job priority
+
+Let you specify delayed_job priority if used as a backend.
+Defaults to 0.
+
+```ruby
+# config/initializers/devise_async.rb
+Devise::Async.delayed_job_priority = -1
+```
+
 ### Setup via block
 
 To avoid repeating `Devise::Async` in the initializer file you can use the block syntax
