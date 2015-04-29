@@ -80,7 +80,8 @@ Devise::Async.queue = :my_custom_queue
 
 ### Delayed job priority
 
-Let you specify delayed_job priority if used as a backend.
+Let you specify the delayed_job priority if used as a backend.
+
 Defaults to 0.
 
 ```ruby
