@@ -1,4 +1,6 @@
-# Devise Async [![Build Status](https://secure.travis-ci.org/mhfs/devise-async.png)](http://travis-ci.org/mhfs/devise-async)
+# Devise Async
+
+[![Tag](https://img.shields.io/github/tag/mhfs/devise-async.svg?style=flat-square)](https://github.com/mhfs/devise-async/releases) [![Build Status](https://img.shields.io/travis/mhfs/devise-async.svg?style=flat-square)](https://travis-ci.org/mhfs/devise-async) [![Code Climate](https://img.shields.io/codeclimate/github/mhfs/devise-async.svg?style=flat-square)](https://codeclimate.com/github/mhfs/devise-async)
 
 Devise Async provides an easy way to configure Devise to send its emails asynchronously using your preferred queuing backend.
 
@@ -11,6 +13,7 @@ Supported backends:
 * Torquebox
 * Backburner
 * Que
+* SuckerPunch
 
 ## Installation
 
@@ -41,7 +44,7 @@ end
 Set your queuing backend by creating `config/initializers/devise_async.rb`:
 
 ```ruby
-# Supported options: :resque, :sidekiq, :delayed_job, :queue_classic, :torquebox, :backburner, :que
+# Supported options: :resque, :sidekiq, :delayed_job, :queue_classic, :torquebox, :backburner, :que, :sucker_punch
 Devise::Async.backend = :resque
 ```
 
@@ -73,6 +76,16 @@ Defaults to :mailer.
 ```ruby
 # config/initializers/devise_async.rb
 Devise::Async.queue = :my_custom_queue
+```
+
+### Custom priority
+
+You can specify a custom priority for created background jobs in Devise or Backburner.
+If no value is specified, jobs will be enqueued with whatever default priority is configured in Devise or Backburner.
+
+```ruby
+# config/initializers/devise_async.rb
+Devise::Async.priority = 10
 ```
 
 ### Setup via block

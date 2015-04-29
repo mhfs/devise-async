@@ -15,6 +15,10 @@ module Devise
         def self.queue
           Devise::Async.queue
         end
+
+        def self.queue_priority
+          Devise::Async.priority.nil? ? ::Backburner.configuration.default_priority : Devise::Async.priority
+        end
       end
     end
   end

@@ -5,6 +5,8 @@ require "minitest/spec"
 require "minitest/mock"
 require "mocha/setup"
 
+require "action_controller"
+
 require "devise"
 require "devise/async"
 require "rails/all"
@@ -25,3 +27,5 @@ require "support/my_mailer"
 include TestHelpers
 
 load File.dirname(__FILE__) + "/support/rails_app/db/schema.rb"
+
+I18n.enforce_available_locales = false
