@@ -78,6 +78,16 @@ Defaults to :mailer.
 Devise::Async.queue = :my_custom_queue
 ```
 
+### Custom priority
+
+You can specify a custom priority for created background jobs in Devise or Backburner.
+If no value is specified, jobs will be enqueued with whatever default priority is configured in Devise or Backburner.
+
+```ruby
+# config/initializers/devise_async.rb
+Devise::Async.priority = 10
+```
+
 ### Setup via block
 
 To avoid repeating `Devise::Async` in the initializer file you can use the block syntax

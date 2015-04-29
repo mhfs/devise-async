@@ -27,6 +27,10 @@ module Devise
     mattr_accessor :queue
     @@queue = :mailer
 
+    # Defines the priority in which the background job will be enqueued. Defaults to the default of the backend you are using.
+    mattr_accessor :priority
+    @@priority = nil
+
     # Defines the enabled configuration that if set to false the emails will be sent synchronously
     mattr_accessor :enabled
     @@enabled = true
