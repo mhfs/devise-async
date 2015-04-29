@@ -24,6 +24,7 @@ module Devise
     it "stores priority config" do
       Async.priority = 15
       Async.priority.must_equal 15
+      Async.priority = nil
     end
 
   end
