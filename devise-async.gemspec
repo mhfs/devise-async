@@ -4,8 +4,8 @@ require File.expand_path('../lib/devise/async/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Marcelo Silveira"]
   gem.email         = ["marcelo@mhfs.com.br"]
-  gem.description   = %q{Send Devise's emails in background. Supports Resque, Sidekiq, Delayed::Job and QueueClassic.}
-  gem.summary       = %q{Devise Async provides an easy way to configure Devise to send its emails asynchronously using your preferred queuing backend. It supports Resque, Sidekiq, Delayed::Job and QueueClassic.}
+  gem.description   = %q{Send Devise's emails in background. Supports Backburner, Resque, Sidekiq, Delayed::Job, QueueClassic, Que, Sucker Punch and Torquebox.}
+  gem.summary       = %q{Devise Async provides an easy way to configure Devise to send its emails asynchronously using your preferred queuing backend. It supports Backburner, Resque, Sidekiq, Delayed::Job, QueueClassic, Que, Sucker Punch and Torquebox.}
   gem.homepage      = "https://github.com/mhfs/devise-async/"
 
   gem.files         = `git ls-files`.split($\)
