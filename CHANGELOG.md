@@ -1,5 +1,15 @@
 ## Unreleased
 
+## 0.10.0-alpha
+
+* Backburner support (jandudulski)
+* Sucker Punch support (kmayer)
+* Que support (marshall-lee)
+* Handle `deliver_now` in preparation for Rails 5 (barelyknown)
+* Option to set a priority for DJ and Backburner (mkon)
+* The locale is remembered before an asynchronous task is run (baschtl)
+* Fixed a usage of `try` that appeared in connection with Rails 4 (baschtl)
+
 ## 0.9.0
 
 * Multiple mailers support (baschtl)
