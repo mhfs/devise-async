@@ -2,6 +2,8 @@
 require File.expand_path('../lib/devise/async/version', __FILE__)
 
 Gem::Specification.new do |gem|
+  gem.name          = "devise-async"
+  gem.version       = Devise::Async::VERSION
   gem.authors       = ["Marcelo Silveira"]
   gem.email         = ["marcelo@mhfs.com.br"]
   gem.description   = %q{Send Devise's emails in background. Supports Backburner, Resque, Sidekiq, Delayed::Job, QueueClassic, Que, Sucker Punch and Torquebox.}
@@ -12,9 +14,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "devise-async"
+
   gem.require_paths = ["lib"]
-  gem.version       = Devise::Async::VERSION
+
 
   gem.add_dependency "devise", "~> 3.2"
 
