@@ -4,6 +4,7 @@ require File.expand_path('../lib/devise/async/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name          = "devise-async"
   gem.version       = Devise::Async::VERSION
+  gem.platform      = Gem::Platform::RUBY
   gem.authors       = ["Marcelo Silveira"]
   gem.email         = ["marcelo@mhfs.com.br"]
   gem.description   = %q{Send Devise's emails in background. Supports Backburner, Resque, Sidekiq, Delayed::Job, QueueClassic, Que, Sucker Punch and Torquebox.}
