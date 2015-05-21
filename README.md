@@ -102,6 +102,18 @@ Devise::Async.setup do |config|
 end
 ```
 
+## Troubleshooting
+
+If you are using Sidekiq and your jobs are enqueued but not processed you might need to set a queue explicitly:
+
+```ruby
+# config/initializers/devise_async.rb
+Devise::Async.setup do |config|
+  config.backend = :sidekiq
+  config.queue   = :default
+end
+```
+
 ## Testing
 
 Be aware that since version 0.3.0 devise-async enqueues the background job in active
