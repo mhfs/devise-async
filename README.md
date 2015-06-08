@@ -91,7 +91,7 @@ Devise::Async.priority = 10
 ### Setup via block
 
 To avoid repeating `Devise::Async` in the initializer file you can use the block syntax
-similar do what `Devise` offers.
+similar to what `Devise` offers.
 
 ```ruby
 # config/initializers/devise_async.rb
