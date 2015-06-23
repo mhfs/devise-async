@@ -1,3 +1,4 @@
+require "devise"
 require "active_support/dependencies"
 require "devise/async/version"
 
