@@ -1,6 +1,7 @@
 module TestHelpers
   def valid_attributes(attributes={})
     { :username => "usertest",
+      :reset_password_sent_at => Time.now.utc,
       :email => generate_unique_email,
       :password => '12345678',
       :password_confirmation => '12345678' }.update(attributes)
