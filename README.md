@@ -71,7 +71,7 @@ trying to set `Devise::Async.mailer` just use `Devise.mailer` instead.
 ### Custom queue
 
 Let you specify a custom queue where to enqueue your background Devise jobs.
-Defaults to :mailer.
+Defaults to :mailers.
 
 ```ruby
 # config/initializers/devise_async.rb

@@ -24,9 +24,9 @@ module Devise
     mattr_accessor :backend
     @@backend = :resque
 
-    # Defines the queue in which the background job will be enqueued. Default is :mailer.
+    # Defines the queue in which the background job will be enqueued. Default is :mailers.
     mattr_accessor :queue
-    @@queue = :mailer
+    @@queue = :mailers
 
     # Defines the priority in which the background job will be enqueued. Defaults to the default of the backend you are using.
     mattr_accessor :priority
