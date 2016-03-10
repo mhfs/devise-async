@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
 
-  gem.add_dependency "devise", "~> 3.2"
+  gem.add_dependency "devise", ">= 3.2"
 
   gem.add_development_dependency "activerecord",              ">= 3.2"
   gem.add_development_dependency "actionpack",                ">= 3.2"
