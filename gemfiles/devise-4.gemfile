@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+gem 'devise', '>= 4.0'
+
+group :development, :test do
+  gem 'activerecord',  '>= 4.1'
+  gem 'actionpack',    '>= 4.1'
+  gem 'actionmailer',  '>= 4.1'
+end
+
+gemspec path: '../'
