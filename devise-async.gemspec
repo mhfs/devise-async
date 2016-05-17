@@ -21,9 +21,9 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "devise", ">= 3.2", "< 4.2"
 
-  gem.add_development_dependency "activerecord",              ">= 3.2"
-  gem.add_development_dependency "actionpack",                ">= 3.2"
-  gem.add_development_dependency "actionmailer",              ">= 3.2"
+  gem.add_development_dependency "activerecord",              ">= 4.0"
+  gem.add_development_dependency "actionpack",                ">= 4.0"
+  gem.add_development_dependency "actionmailer",              ">= 4.0"
   gem.add_development_dependency "delayed_job_active_record", ">= 4.0.3"
   gem.add_development_dependency "minitest",                  ">= 3.0"
   gem.add_development_dependency "sqlite3",                   "~> 1.3"
