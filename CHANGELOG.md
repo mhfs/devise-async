@@ -1,6 +1,10 @@
 ## Unreleased
+* Update devise dependency to >=3.2 & < 4.1
 
-## 0.10.0-alpha
+## 0.10.1
+* What has been changed here?
+
+## 0.10.0
 
 * Backburner support (jandudulski)
 * Sucker Punch support (kmayer)
