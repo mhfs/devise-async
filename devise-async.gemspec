@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "devise", ">= 3.2", "< 4.1"
 
+  gem.add_development_dependency "minitest"
   gem.add_development_dependency "activerecord",              ">= 3.2"
   gem.add_development_dependency "actionpack",                ">= 3.2"
   gem.add_development_dependency "actionmailer",              ">= 3.2"
@@ -31,7 +32,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "queue_classic",             "~> 2.0"
   gem.add_development_dependency "backburner",                "~> 0.4"
   gem.add_development_dependency "mocha",                     "~> 0.11"
-  gem.add_development_dependency "minitest",                  "~> 3.0"
   gem.add_development_dependency "torquebox-no-op",           "~> 2.3"
   gem.add_development_dependency "sucker_punch",              "~> 1.0.5"
   gem.add_development_dependency "que",                       "~> 0.8"
