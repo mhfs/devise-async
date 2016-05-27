@@ -6,3 +6,6 @@ rvm:
 
 services:
   - redis-server
+
+before_install:
+  - gem install bundler -v 1.12.5 --no-ri --no-rdoc
