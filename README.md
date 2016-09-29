@@ -128,6 +128,10 @@ Older versions of Devise are supported in the [devise_2_1](https://github.com/mh
 
 Please refer to that branch README for further info.
 
+## Devise >= 4.0
+
+The current state of this gem does not support Devise 4.0 and up. Have a look into [the Github issue](https://github.com/mhfs/devise-async/issues/94) addressing this. If you are in need for a solution to send Devise messages delayed [a switch to ActiveJob](https://github.com/plataformatec/devise#activejob-integration) is strongly advised.
+
 ## Contributing
 
 1. Fork it
