@@ -13,8 +13,12 @@ module Devise
         # Return the connection to the pool after we're done with it
         # see: https://github.com/brandonhilkert/sucker_punch#usage
         def perform(method, resource_class, resource_id, *args)
-          ActiveRecord::Base.connection_pool.with_connection do
-            super
+          if defined?(ActiveRecord)
+            ActiveRecord::Base.connection_pool.with_connection do
+              super
+            end
+          else # mongoid
+            super(method, resource_class, resource_id, *args)
           end
         end
       end
