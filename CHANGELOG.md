@@ -1,4 +1,7 @@
-## Unreleased
+## 1.0.0beta
+
+* Adds support for Rails 5
+* Reduces this gem to use ActiveJob as an abstraction to various backends
 
 ## 0.10.2
 
