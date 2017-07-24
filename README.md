@@ -50,6 +50,10 @@ Devise::Async.backend = :resque
 
 Tip: it defaults to Resque. You don't need to create the initializer if using it.
 
+> When using **Devise** with **ActiveJob**, **devise-async** should not be applicable. You just need to follow the instructions [here for devise](https://github.com/plataformatec/devise#activejob-integration) and [here for sidekiq](https://github.com/mperham/sidekiq/wiki/Active-Job). Make sure that sidekiq is started with instruction to process the `mailers` queue because as per Sidekiq [here](https://github.com/mperham/sidekiq/wiki/Active-Job#action-mailer)  
+> You will encounter this error:  
+> `ArgumentError in UsersController#create  wrong number of arguments (given 3, expected 1..2)`
+
 ## Advanced Options
 
 ### Enabling via config
