@@ -2,18 +2,7 @@
 
 [![Tag](https://img.shields.io/github/tag/mhfs/devise-async.svg?style=flat-square)](https://github.com/mhfs/devise-async/releases) [![Build Status](https://img.shields.io/travis/mhfs/devise-async.svg?style=flat-square)](https://travis-ci.org/mhfs/devise-async) [![Code Climate](https://img.shields.io/codeclimate/github/mhfs/devise-async.svg?style=flat-square)](https://codeclimate.com/github/mhfs/devise-async)
 
-Devise Async provides an easy way to configure Devise to send its emails asynchronously using your preferred queuing backend.
-
-Supported backends:
-
-* Resque
-* Sidekiq
-* Delayed::Job
-* QueueClassic
-* Torquebox
-* Backburner
-* Que
-* SuckerPunch
+Devise Async provides an easy way to configure Devise to send its emails asynchronously using ActiveJob.
 
 ## Installation
 
@@ -33,7 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
-Add `:async` to the `devise` call in your model:
+1. Setup [ActiveJob](http://edgeguides.rubyonrails.org/active_job_basics.html),
+2. Add `:async` to the `devise` call in your model:
 
 ```ruby
 class User < ActiveRecord::Base
@@ -41,16 +31,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-Set your queuing backend by creating `config/initializers/devise_async.rb`:
-
-```ruby
-# Supported options: :resque, :sidekiq, :delayed_job, :queue_classic, :torquebox, :backburner, :que, :sucker_punch
-Devise::Async.backend = :resque
-```
-
-Tip: it defaults to Resque. You don't need to create the initializer if using it.
-
-## Advanced Options
+## Options
 
 ### Enabling via config
 
@@ -59,33 +40,6 @@ The gem can be enabled/disabled easily via config, for example based on environm
 ```ruby
 # config/initializers/devise_async.rb
 Devise::Async.enabled = true # | false
-```
-
-### Custom mailer class
-
-Customize `Devise.mailer` at will and `devise-async` will honor it.
-
-Upgrade note: if you're upgrading from any version < 0.6 and getting errors
-trying to set `Devise::Async.mailer` just use `Devise.mailer` instead.
-
-### Custom queue
-
-Let you specify a custom queue where to enqueue your background Devise jobs.
-Defaults to :mailer.
-
-```ruby
-# config/initializers/devise_async.rb
-Devise::Async.queue = :my_custom_queue
-```
-
-### Custom priority
-
-You can specify a custom priority for created background jobs in Devise or Backburner.
-If no value is specified, jobs will be enqueued with whatever default priority is configured in Devise or Backburner.
-
-```ruby
-# config/initializers/devise_async.rb
-Devise::Async.priority = 10
 ```
 
 ### Setup via block
@@ -97,40 +51,22 @@ similar to what `Devise` offers.
 # config/initializers/devise_async.rb
 Devise::Async.setup do |config|
   config.enabled = true
-  config.backend = :resque
-  config.queue   = :my_custom_queue
 end
 ```
 
-## Troubleshooting
+### Custom mailer class
 
-If you are using Sidekiq and your jobs are enqueued but not processed you might need to set a queue explicitly:
+Customize `Devise.mailer` at will and `devise-async` will honor it.
 
-```ruby
-# config/initializers/devise_async.rb
-Devise::Async.setup do |config|
-  config.backend = :sidekiq
-  config.queue   = :default
-end
-```
+## Older versions of Rails and devise
+
+If you want to use this gem with Rails < 5 and/or devise < 4 check out older releases, please.
 
 ## Testing
 
-Be aware that since version 0.3.0 devise-async enqueues the background job in active
-record's `after_commit` hook. If you're using rspec's `use_transactional_fixtures` the jobs
-might not be enqueued as you'd expect.
+RSpec is used for testing. The following should be enough for running the test:
 
-More details in this stackoverflow [thread](http://stackoverflow.com/questions/13406248/how-do-i-get-devise-async-working-with-cucumber/13465089#13465089).
-
-## Devise < 2.2
-
-Older versions of Devise are supported in the [devise_2_1](https://github.com/mhfs/devise-async/tree/devise_2_1) branch and in the 0.5 series of devise-async.
-
-Please refer to that branch README for further info.
-
-## Devise >= 4.0
-
-The current state of this gem does not support Devise 4.0 and up. Have a look into [the Github issue](https://github.com/mhfs/devise-async/issues/94) addressing this. If you are in need for a solution to send Devise messages delayed [a switch to ActiveJob](https://github.com/plataformatec/devise#activejob-integration) is strongly advised.
+    $ bundle exec rspec
 
 ## Contributing
 
