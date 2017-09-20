@@ -18,6 +18,6 @@ RSpec.configure do |config|
   config.include TestHelpers
 
   config.before :each do
-    load File.dirname(__FILE__) + '/support/rails_app/db/schema.rb'
+    load "#{File.dirname(__FILE__)}/support/rails_app/db/schema.rb"
   end
 end

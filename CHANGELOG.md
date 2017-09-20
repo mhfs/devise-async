@@ -1,3 +1,7 @@
+## 1.0.0
+
+* Updates the readme
+
 ## 1.0.0beta
 
 * Adds support for Rails 5

@@ -1,14 +1,12 @@
 RSpec.describe Devise::Models::Async do
-  before :each do
+  before do
     ActiveJob::Base.queue_adapter = :test
   end
 
   context 'with unchanged model' do
-    subject { create_admin }
+    subject { admin }
 
-    before :each do
-      subject
-    end
+    let!(:admin) { create_admin }
 
     it 'enqueues notifications immediately when the model did not change' do
       expect(ActionMailer::DeliveryJob).to have_been_enqueued
@@ -47,7 +45,7 @@ RSpec.describe Devise::Models::Async do
     end
 
     context 'with saving the model' do
-      let(:save_admin) { admin.save }
+      let(:saved_admin) { admin.save }
 
       it 'accumulates a pending notification to be sent after commit' do
         expect(subject).to eq([
@@ -59,13 +57,13 @@ RSpec.describe Devise::Models::Async do
         subject
 
         expect {
-          save_admin
+          saved_admin
         }.to have_enqueued_job(ActionMailer::DeliveryJob)
       end
 
       it 'forwards the correct data to the job' do
         subject
-        save_admin
+        saved_admin
 
         job_data = ActiveJob::Base.queue_adapter.enqueued_jobs.first[:args]
         expected_job_data = ['Devise::Mailer', 'confirmation_instructions', admin.send(:confirmation_token)]
@@ -76,7 +74,7 @@ RSpec.describe Devise::Models::Async do
   end
 
   context 'when devise async is disabled' do
-    around :each do |example|
+    around do |example|
       Devise::Async.enabled = false
       example.run
       Devise::Async.enabled = true
