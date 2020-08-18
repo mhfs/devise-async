@@ -50,7 +50,9 @@ module Devise
       private
 
       def deliver_mail_later(notification, model, args)
-        devise_mailer.send(notification, model, *args).deliver_later
+        devise_mailer.
+          send(notification, model, *args).
+          deliver_later(queue: Devise::Async.queue)
       end
     end
   end
