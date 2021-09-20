@@ -10,7 +10,9 @@ gem "actionpack", version
 gem "actionmailer", version
 
 if version =~ /^4/
-  gem 'sqlite3', '~> 1.3'
+  gem 'sqlite3', '~> 1.3.6'
+elsif version =~ /^5.2/
+  gem 'sqlite3', '~> 1.3.6'
 else
   gem 'sqlite3', '~> 1.4'
 end
