@@ -19,13 +19,10 @@ Gem::Specification.new do |gem|
 
 
   gem.add_runtime_dependency 'devise', '>= 4.0'
-  gem.add_runtime_dependency 'activejob', '>= 5.0'
+  gem.add_runtime_dependency 'activejob', '>= 4.2'
 
-  gem.add_development_dependency 'activerecord', '>= 5.0'
-  gem.add_development_dependency 'actionpack',   '>= 5.0'
-  gem.add_development_dependency 'actionmailer', '>= 5.0'
   gem.add_development_dependency 'rspec',        '~> 3.6'
   gem.add_development_dependency 'rspec-rails',  '~> 3.6'
-  gem.add_development_dependency 'sqlite3',      '~> 1.3'
+  gem.add_development_dependency 'sqlite3'
   gem.add_development_dependency 'pry'
 end

@@ -1,6 +1,6 @@
 # Devise Async
 
-[![Tag](https://img.shields.io/github/tag/mhfs/devise-async.svg?style=flat-square)](https://github.com/mhfs/devise-async/releases) [![Build Status](https://img.shields.io/travis/mhfs/devise-async.svg?style=flat-square)](https://travis-ci.org/mhfs/devise-async) [![Code Climate](https://img.shields.io/codeclimate/github/mhfs/devise-async.svg?style=flat-square)](https://codeclimate.com/github/mhfs/devise-async)
+[![Build Status](https://app.travis-ci.com/joe1chen/devise-async.svg?branch=master)](https://app.travis-ci.com/github/joe1chen/devise-async)
 
 Devise Async provides an easy way to configure Devise to send its emails asynchronously using ActiveJob.
 

@@ -1,3 +1,5 @@
+require 'action_mailer'
+
 module Devise
   module Models
     module Async
@@ -50,7 +52,12 @@ module Devise
       private
 
       def deliver_mail_later(notification, model, args)
-        devise_mailer.send(notification, model, *args).deliver_later
+        if ActionMailer::Base.method_defined?(:deliver_later_queue_name)
+          # Rails 5 introduced the option of setting the mailer queue name.
+          devise_mailer.send(notification, model, *args).deliver_later(queue: Devise::Async.queue || ActionMailer::Base.deliver_later_queue_name)
+        else
+          devise_mailer.send(notification, model, *args).deliver_later
+        end
       end
     end
   end

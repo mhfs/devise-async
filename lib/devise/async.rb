@@ -8,6 +8,10 @@ module Devise
     mattr_accessor :enabled
     @@enabled = true
 
+    # Defines the queue in which the background job will be enqueued.
+    mattr_accessor :queue
+    @@queue = nil
+
     # Allow configuring Devise::Async with a block
     #
     # Example:
